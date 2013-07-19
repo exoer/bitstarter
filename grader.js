@@ -50,10 +50,7 @@ if(require.main == module) {
         .option('-u, --url <url>', 'Url to index')
 	.parse(process.argv);
     if(program.url) {
-	console.log(program.url)
 	rest.get(program.url).on('complete', function(result){
-	    console.log(result);
-	    //var html = cheerio.load(result);
 	    var checkJson = checkHtmlFile(result, program.checks);
 	    var outJson = JSON.stringify(checkJson, null, 4);
 	    console.log(outJson);
